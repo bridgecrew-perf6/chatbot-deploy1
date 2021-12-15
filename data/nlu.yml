@@ -91,6 +91,7 @@ nlu:
     - Can we have some extra bath towels?
     - Can we have some fresh towels?
     - I need some towels
+    - I need towels
 - intent: inform
   examples: |
     - I'd like [two](number_of_towels) towel
@@ -109,3 +110,23 @@ nlu:
     - [500](room_number)
     - [hand](towel_type)
     - [600](room_number)
+    - [hand](towel_type)
+- intent: number_of_towels
+  examples: |
+    - I'd like [two](number_of_towels) towel
+    - I want [2](number_of_towels) towel
+    - [1](number_of_towels)
+    - [2](number_of_towels)
+    - [3](number_of_towels)
+    - [4](number_of_towels)
+    - [5](number_of_towels)
+    - [10](number_of_towels)
+- intent: room_number
+  examples: |
+    - [100](room_number)
+    - [225](room_number)
+    - [603](room_number)
+    - [800](room_number)
+    - [1200](room_number)
+    - [4000](room_number)
+    - [400](room_number)

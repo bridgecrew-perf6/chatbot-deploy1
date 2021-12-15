@@ -209,3 +209,35 @@ stories:
   - action: utter_anything_else
   - intent: goodbye
   - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: order_towels
+  - action: towel_order_form
+  - active_loop: towel_order_form
+  - slot_was_set:
+    - requested_slot: number_of_towels
+  - slot_was_set:
+    - number_of_towels: '4'
+  - slot_was_set:
+    - number_of_towels: '4'
+  - slot_was_set:
+    - requested_slot: towel_type
+  - slot_was_set:
+    - towel_type: hand
+  - slot_was_set:
+    - towel_type: hand
+  - slot_was_set:
+    - requested_slot: room_number
+  - slot_was_set:
+    - room_number: '400'
+  - slot_was_set:
+    - room_number: '400'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_towel_slots
+  - action: utter_submit
+  - action: utter_anything_else
