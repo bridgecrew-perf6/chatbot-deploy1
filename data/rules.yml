@@ -1,0 +1,49 @@
+version: "2.0"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: Activate Towels Form
+  steps:
+  - intent: order_towels
+  - action: towel_order_form
+  - active_loop: towel_order_form
+
+- rule: Submit Towels Form
+  condition:
+  - active_loop: towel_order_form
+  steps:
+  - action: towel_order_form
+  - active_loop: null
+  - slot_was_set:
+    - requested_slot: null
+  - action: utter_towel_slots
+  - action: utter_submit
+  - action: utter_anything_else
+
+
+- rule: Interruption in Towels Form
+  condition:
+  # Condition that form is active.
+  - active_loop: towel_order_form
+  steps:
+  # This unhappy path handles the case of an intent `bot_challenge`.
+  - intent: bot_challenge
+  - action: utter_iamabot
+  # Return to form after handling the `bot_challenge` intent
+  - action: towel_order_form
+  - active_loop: towel_order_form
+
+- rule: Ask the user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase

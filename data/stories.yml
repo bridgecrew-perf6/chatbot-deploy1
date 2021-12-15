@@ -1,0 +1,211 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: mood_great
+  - action: utter_happy
+
+- story: path 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: order_towels
+  - action: towel_order_form
+  - active_loop: towel_order_form
+  - slot_was_set:
+      - requested_slot: number_of_towels
+  - slot_was_set:
+      - number_of_towels: 4
+  - slot_was_set:
+      - number_of_towels: null
+  - slot_was_set:
+      - requested_slot: towel_type
+  - slot_was_set:
+      - towel_type: bath
+  - slot_was_set:
+      - towel_type: null
+  - slot_was_set:
+      - requested_slot: room_number
+  - slot_was_set:
+      - room_number: 200
+  - slot_was_set:
+      - room_number: null
+#  - slot_was_set:
+#      - requested_slot: room_number
+#  - slot_was_set:
+#      - room_number: 44
+#  - slot_was_set:
+#      - room_number: null
+#  - slot_was_set:
+#      - requested_slot: room_number
+#  - slot_was_set:
+#      - room_number: 400
+#  - slot_was_set:
+#      - room_number: 400
+  - slot_was_set:
+      - requested_slot: null
+  - active_loop: null
+  - action: utter_towel_slots
+  - action: utter_submit
+  - action: utter_anything_else
+#  - action: utter_towel_order
+  - intent: goodbye
+  - action: utter_goodbye
+
+
+- story: path 3
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: order_towels
+  - action: towel_order_form
+  - active_loop: towel_order_form
+  - slot_was_set:
+      - requested_slot: number_of_towels
+  - slot_was_set:
+      - number_of_towels: 4
+  - slot_was_set:
+      - number_of_towels: 4
+  - slot_was_set:
+      - requested_slot: towel_type
+  - slot_was_set:
+      - towel_type: bath
+  - slot_was_set:
+      - towel_type: bath
+  - slot_was_set:
+      - requested_slot: towel_type
+  - slot_was_set:
+      - towel_type: bath
+  - slot_was_set:
+      - towel_type: hand
+      - requested_slot: room_number
+  - slot_was_set:
+      - room_number: 200
+  - slot_was_set:
+      - room_number: null
+  - slot_was_set:
+      - requested_slot: room_number
+  - slot_was_set:
+      - room_number: 44
+  - slot_was_set:
+      - room_number: null
+  - slot_was_set:
+      - requested_slot: room_number
+  - slot_was_set:
+      - room_number: 400
+  - slot_was_set:
+      - room_number: 400
+  - slot_was_set:
+      - requested_slot: null
+  - active_loop: null
+  - action: utter_towel_slots
+  - action: utter_submit
+  - action: utter_anything_else
+  - intent: goodbye
+  - action: utter_goodbye
+
+
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: order_towels
+  - action: towel_order_form
+  - active_loop: towel_order_form
+  - slot_was_set:
+    - requested_slot: number_of_towels
+  - slot_was_set:
+    - number_of_towels: '4'
+  - slot_was_set:
+    - number_of_towels: '4'
+  - slot_was_set:
+    - requested_slot: towel_type
+  - slot_was_set:
+    - towel_type: bath
+  - slot_was_set:
+    - towel_type: bath
+  - slot_was_set:
+    - requested_slot: room_number
+  - slot_was_set:
+    - room_number: '400'
+  - slot_was_set:
+    - room_number: '400'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_towel_slots
+  - action: utter_submit
+  - action: utter_anything_else
+  - intent: goodbye
+  - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: order_towels
+  - action: towel_order_form
+  - active_loop: towel_order_form
+  - slot_was_set:
+    - requested_slot: number_of_towels
+  - slot_was_set:
+    - number_of_towels: '4'
+  - slot_was_set:
+    - number_of_towels: '4'
+  - slot_was_set:
+    - requested_slot: towel_type
+  - slot_was_set:
+    - towel_type: bath
+  - slot_was_set:
+    - towel_type: bath
+  - slot_was_set:
+    - requested_slot: room_number
+  - slot_was_set:
+    - room_number: '500'
+  - slot_was_set:
+    - room_number: '500'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_towel_slots
+  - action: utter_submit
+  - action: utter_anything_else
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: order_towels
+  - action: towel_order_form
+  - active_loop: towel_order_form
+  - slot_was_set:
+    - requested_slot: number_of_towels
+  - slot_was_set:
+    - number_of_towels: '4'
+  - slot_was_set:
+    - number_of_towels: '4'
+  - slot_was_set:
+    - requested_slot: towel_type
+  - slot_was_set:
+    - towel_type: hand
+  - slot_was_set:
+    - towel_type: hand
+  - slot_was_set:
+    - requested_slot: room_number
+  - slot_was_set:
+    - room_number: '600'
+  - slot_was_set:
+    - room_number: '600'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: utter_towel_slots
+  - action: utter_submit
+  - action: utter_anything_else
+  - intent: goodbye
+  - action: utter_goodbye

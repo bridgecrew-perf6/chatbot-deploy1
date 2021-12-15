@@ -1,0 +1,84 @@
+version: '2.0'
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- inform
+- goodbye
+- order_towels
+- greet
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+- request_towel_order_form
+entities:
+- number_of_towels
+- room_number
+- towel_type
+slots:
+  number_of_towels:
+    type: text
+    influence_conversation: false
+  towel_type:
+    type: text
+    influence_conversation: false
+  room_number:
+    type: text
+    influence_conversation: false
+  requested_slot:
+    type: unfeaturized
+    influence_conversation: false
+responses:
+  utter_please_rephrase:
+  - text: I'm sorry, I didn't quite understand that. Could you rephrase?
+  utter_default:
+  - text: Sorry can you say that another way
+  utter_greet:
+  - text: Hi! I'm your personal VA, how can I help you today?
+  utter_cheer_up:
+  - text: 'Here is something to cheer you up:'
+    image: https://i.imgur.com/nGF1K8f.jpg
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_submit:
+  - text: Great!  I will send those up as soon as possible
+  utter_towel_order:
+  - text: Just to confirm you want {number_of_towels} {towel_type} towels?
+  utter_ask_number_of_towels:
+  - text: 'How many towels would you like? :'
+  utter_ask_towel_type:
+  - text: 'What type of towel would you like (Bath, hand, or washcloth)? '
+  utter_ask_room_number:
+  - text: 'What is your room number? '
+  utter_towel_slots:
+  - text: To confirm you are requesting {number_of_towels} {towel_type} towels to room {room_number}
+  utter_anything_else:
+  - text: 'Is there anything else I can help with?  '
+actions:
+- utter_anything_else
+- utter_goodbye
+- utter_greet
+- utter_submit
+- utter_towel_slots
+- validate_towel_order_form
+- validate_towel_type
+forms:
+  towel_order_form:
+    required_slots:
+      number_of_towels:
+      - entity: number_of_towels
+        type: from_entity
+      towel_type:
+      - entity: towel_type
+        type: from_entity
+      room_number:
+      - entity: room_number
+        type: from_entity
